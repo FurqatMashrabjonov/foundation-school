@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tasks', function (Blueprint $table) {
+        Schema::create('applications', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('description')->nullable();
-            $table->string('status')->default('todo');
-            $table->integer('order_column')->nullable();
+            $table->string('name');
+            $table->string('phone')->unique();
+            $table->string('course_type');
+            $table->string('status')->default(\App\Enums\ApplicationStatus::NEW);
+
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tasks');
+        Schema::dropIfExists('applications');
     }
 };
