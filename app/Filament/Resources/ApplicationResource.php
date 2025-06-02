@@ -48,7 +48,7 @@ class ApplicationResource extends Resource
                     ->sortable()
                     ->searchable()
                     ->label('ID'),
-                TextColumn::make('full_name')
+                TextColumn::make('name')
                     ->sortable()
                     ->searchable()
                     ->label('F.I.O'),
